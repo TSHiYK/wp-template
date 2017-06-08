@@ -1,22 +1,24 @@
-version: "2"
+version: "3"
 services:
   wordpress:
     build: ./my-wordpress
     ports:
       - "8080:80"
     depends_on:
-      - mysql
+      - db
+    restart: always
     environment:
-      WORDPRESS_DB_HOST: "mysql:3306"
+      WORDPRESS_DB_HOST: "db:3306"
     env_file: .env
     volumes:
       - ./themes/bones:/var/www/html/wp-content/themes/bones
-  mysql:
+  db:
     image: mysql:latest
     env_file: .env
+    restart: always
     volumes:
-      - data-mysql:/var/lib/mysql
-      - ./data-mysql/mysql.dump.sql:/docker-entrypoint-initdb.d/install_wordpress.sql
+      - db_data:/var/lib/mysql
+      # - ./db_data/mysql.dump.sql:/docker-entrypoint-initdb.d/install_wordpress.sql
 volumes:
-  data-mysql:
+  db_data:
     driver: local

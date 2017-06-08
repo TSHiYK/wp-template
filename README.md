@@ -22,11 +22,11 @@ MYSQL_PASSWORD=hogehoge
   * `$ docker-compose up -d`
   * Webブラウザから `http://localhost:8080` にアクセス
 * コンテナを停止
-  * `$ docker-compse stop`
+  * `$ docker-compose stop`
 * コンテナを再起動
-  * `$ docker-compse start` もしくは `$ docker-compse up`
+  * `$ docker-compose start` もしくは `$ docker-compose up`
 * コンテナを削除
-  * `$ docker-compse down`
+  * `$ docker-compose down`
 
 ## テーマの置き場所
 
@@ -34,7 +34,7 @@ MYSQL_PASSWORD=hogehoge
 
 ## DBのバックアップ
 
-MySQLのコンテナが起動している状態で、下記のコマンドより `db_data` ディレクトリに `mysql.dump.sql` ファイルが生成される。
+MySQLのコンテナが起動している状態で、下記のコマンドより `db_data` ディレクトリに `mysql.dump.sql` ファイルが生成される。
 
 `$ docker exec -it dbのコンテナ名 sh -c 'mysqldump wordpress -u wp_user -phogehoge 2> /dev/null' > db_data/mysql.dump.sql
 `
